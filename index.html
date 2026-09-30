@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>The First Lab by Web</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>The First Lab by Web</h1>
@@ -42,8 +43,6 @@
     <label>Input Y</label>
     <input type="text" id="Y" pattern="^-?(?:[0-4](?:[.,]\d+)?|5(?:[.,]0+)?)$" placeholder="Input Y(-5...5)">
     <span id="YError"></span>
-    <br>
-    <br>
     <label>Input R</label>
     <ul id="R">
         <li><input type="radio" name="OptionR" value="1" checked/><label>1</label></li>
@@ -54,23 +53,28 @@
     </ul>
     <input type="submit" value="Send">
 </form>
-<br>
 <button id="reset">Reset</button>
-<table id="resultsTable">
-    <thead>
-    <tr>X</tr>
-    <tr>Y</tr>
-    <tr>R</tr>
-    <tr>Result</tr>
-    <tr>Time</tr>
-    </thead>
-    <tbody></tbody>
-</table>
-<div style="position: relative; width: 400px; height: 400px;">
-    <canvas id="areaCanvas" width="400" height="400"
-            style="position: absolute; left: 0; top: 0; background-color: #ffffff;"></canvas>
-    <canvas id="areaCanvasPoints" width="400" height="400"
-            style="position: absolute; left: 0; top: 0; background: none !important;;"></canvas>
+<div>
+    <table id="resultsTable">
+        <thead>
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Result</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="right-column">
+    <div style="position: relative; width: 400px; height: 400px;">
+        <canvas id="areaCanvas" width="400" height="400"
+                style="position: absolute; left: 0; top: 0; background-color: #ffffff;"></canvas>
+        <canvas id="areaCanvasPoints" width="400" height="400"
+                style="position: absolute; left: 0; top: 0; background: none !important;;"></canvas>
+    </div>
 </div>
 <script src="index.js"></script>
 </body>

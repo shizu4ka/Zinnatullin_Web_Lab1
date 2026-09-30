@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #222;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+label {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+#X, #R {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#X > li > button {
+    padding: 8px 10px;
+    border: 1px solid #999;
+    background: #eee;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="submit"], #reset {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    background: #4a90e2;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+#reset {
+    background: #888;
+}
+
+#X > li > button:hover {
+    background: #ddd;
+    border-color: #666;
+}
+
+input[type="submit"]:hover {
+    background: #357abd;
+}
+
+#reset:hover {
+    background: #666;
+}
+
+input[type="text"]:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+}
+
+input[type="text"]:valid {
+    border-left: 5px solid #2ecc71;
+}
+
+input[type="text"]:invalid {
+    border-left: 5px solid #e74c3c;
+}
+
+
+
+span {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 4px;
+}
+
+#resultsTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+}
+
+#resultsTable th {
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#resultsTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+div[style*="position: relative"] {
+    margin: 20px auto;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 400px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
