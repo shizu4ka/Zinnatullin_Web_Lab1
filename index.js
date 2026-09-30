@@ -27,6 +27,76 @@ function IsPointInArea(x, y, r) {
     } else return false;
 }
 
+function draw() {
+    const canvas = document.getElementById("areaCanvas");
+    const ctx = canvas.getContext("2d");
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    //стрелки
+    ctx.moveTo(width / 2, height / 20);
+    ctx.lineTo(width / 2, height * 19 / 20);
+    ctx.moveTo(width / 21, height / 2);
+    ctx.lineTo(width * 20 / 21, height / 2);
+
+    //черточки на y
+    ctx.moveTo(width * 19 / 40, height * 5.5 / 8);
+    ctx.lineTo(width * 21 / 40, height * 5.5 / 8);
+    ctx.moveTo(width * 19 / 40, height * 7 / 8);
+    ctx.lineTo(width * 21 / 40, height * 7 / 8);
+    ctx.moveTo(width * 21 / 40, height * 2.5 / 8);
+    ctx.lineTo(width * 19 / 40, height * 2.5 / 8);
+    ctx.moveTo(width * 21 / 40, height / 8);
+    ctx.lineTo(width * 19 / 40, height / 8);
+
+    //черточки на x
+    ctx.moveTo(width * 5.5 / 8, height * 19 / 40);
+    ctx.lineTo(width * 5.5 / 8, height * 21 / 40);
+    ctx.moveTo(width * 7 / 8, height * 19 / 40);
+    ctx.lineTo(width * 7 / 8, height * 21 / 40);
+    ctx.moveTo(width * 2.5 / 8, height * 21 / 40);
+    ctx.lineTo(width * 2.5 / 8, height * 19 / 40);
+    ctx.moveTo(width / 8, height * 21 / 40);
+    ctx.lineTo(width / 8, height * 19 / 40);
+
+    //прорисовка
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+
+    //2 четверть
+    ctx.fillStyle = "rgba(1, 137, 240 , 0.8)";
+    ctx.fillRect(width * 2.5 / 8, height / 8, width * 1.5 / 8, height * 3 / 8);
+
+    //3 четверть
+    ctx.beginPath();
+    ctx.moveTo(width / 2, height / 2);
+    ctx.arc(width/2,height/2,width*3/8, Math.PI/2,Math.PI, false);
+    ctx.fill()
+    ctx.closePath();
+
+    //4 четверть
+    ctx.beginPath();
+    ctx.moveTo(width / 2, height / 2);
+    ctx.lineTo(width*7/8, height / 2);
+    ctx.lineTo(width/2, height*7/8);
+    ctx.fill()
+    ctx.closePath();
+    }
+draw();
+
+//рисуем точку
+function drawPoint(x, y, r) {
+    const canvas = document.getElementById("areaCanvasPoints");
+    const ctx = canvas.getContext("2d");
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    ctx.beginPath();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.arc(width/2+x/r*width*3/8, height/2-y/r*height*3/8, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#ff0000';
+    ctx.fill();
+    ctx.closePath();
+}
+
 //обработка формы
 let x = null;
 document.getElementById('X').addEventListener('click', function (event) {
@@ -54,7 +124,7 @@ form.addEventListener("submit", function (event) {
         return;
     }
     const num = Number(y.replace(',', '.'))
-    if (isNaN(y) || num < -5 || num > 5) {
+    if (isNaN(num) || num < -5 || num > 5) {
         event.preventDefault();
         errorSpanY.textContent = 'Please enter a valid number';
         return;
@@ -62,6 +132,7 @@ form.addEventListener("submit", function (event) {
 
     const r = document.querySelector('input[name="OptionR"]:checked').value;
     const result = IsPointInArea(x, y, r);
+    drawPoint(x, y, r);
     const time = Date.now();
     const newPoint = {x: x, y: y, r: r, result: result, time: time};
     addPointToTable(newPoint);
@@ -96,3 +167,9 @@ function loadPoints() {
 }
 
 loadPoints();
+
+document.getElementById('reset').addEventListener('click', function (event) {
+    event.preventDefault();
+    localStorage.clear();
+    tableBody.innerHTML = "";
+})

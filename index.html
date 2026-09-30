@@ -40,7 +40,7 @@
     <span id="XError"></span>
     <br>
     <label>Input Y</label>
-    <input type="text" id="Y" placeholder="Input Y(-5...5)">
+    <input type="text" id="Y" pattern="^-?(?:[0-4](?:[.,]\d+)?|5(?:[.,]0+)?)$" placeholder="Input Y(-5...5)">
     <span id="YError"></span>
     <br>
     <br>
@@ -55,6 +55,7 @@
     <input type="submit" value="Send">
 </form>
 <br>
+<button id="reset">Reset</button>
 <table id="resultsTable">
     <thead>
     <tr>X</tr>
@@ -65,6 +66,12 @@
     </thead>
     <tbody></tbody>
 </table>
+<div style="position: relative; width: 400px; height: 400px;">
+    <canvas id="areaCanvas" width="400" height="400"
+            style="position: absolute; left: 0; top: 0; background-color: #ffffff;"></canvas>
+    <canvas id="areaCanvasPoints" width="400" height="400"
+            style="position: absolute; left: 0; top: 0; background: none !important;;"></canvas>
+</div>
 <script src="index.js"></script>
 </body>
 </html>
